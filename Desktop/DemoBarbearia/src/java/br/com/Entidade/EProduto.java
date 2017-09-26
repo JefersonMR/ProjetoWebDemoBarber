@@ -11,20 +11,20 @@ import java.util.Date;
  *
  * @author Jeferson
  */
-public class Produto {
-private int Cod =0;
+public class EProduto {
+private int IDP =0;
 private String Marca="";
 private String Nome="";
 private String Descriçao="";
 private Date fabricaçao;
 private Date validade;
 
-    public int getCod() {
-        return Cod;
+    public int getIDP() {
+        return IDP;
     }
 
-    public void setCod(int Cod) {
-        this.Cod = Cod;
+    public void setIDP(int IDP) {
+        this.IDP = IDP;
     }
 
     public String getMarca() {

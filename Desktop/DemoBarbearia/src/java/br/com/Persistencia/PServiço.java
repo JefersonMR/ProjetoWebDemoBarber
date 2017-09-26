@@ -5,10 +5,14 @@
  */
 package br.com.Persistencia;
 
-import br.com.Entidade.Serviço;
+import br.com.Entidade.EServiço;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -22,10 +26,10 @@ public class PServiço {
         connection = br.com.Util.Conexao.getConexao();  
     }
     
-    public void incluirSer(Serviço ser)throws Exception{
+    public void incluirSer(EServiço ser)throws Exception{
          //Cria a string com o sql para ser executado
-        String sql = "INSERT INTO Produto ( nome,"
-                + "descriçao, " + "profissional, " + "tempo, " + "valor) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO servico ( nome,"
+                + "descricao, " + "profissional, " + "tempo, " + "valor) VALUES (?, ?, ?, ?, ?)";
     
     //Cria o objeto para executar os comandos "contra" o banco
         PreparedStatement prd = connection.prepareStatement(sql);
@@ -39,19 +43,19 @@ public class PServiço {
          prd.executeUpdate();
     }
     
-    public void deleteSer(Serviço ser)throws Exception{
+    public void deleteSer(EServiço ser)throws Exception{
         try {
-        PreparedStatement prd= connection.prepareStatement("DELETE * FROM Serviço WHERE idS=?");
+        PreparedStatement prd= connection.prepareStatement("DELETE * FROM servico WHERE idservico=?");
         prd.setInt(1, ser.getIDS());
         prd.executeUpdate();
         } catch (SQLException e) {
         }
     }
     
-   public void alterarSer(Serviço ser)throws Exception{
+   public void alterarSer(EServiço ser)throws Exception{
        try {
            
-       PreparedStatement prd = connection.prepareStatement("UPDATE Serviço SET nome=?, descriçao=?, profissional=?, tempo=?, valor=?");
+       PreparedStatement prd = connection.prepareStatement("UPDATE servico SET nome=?, descricao=?, profissional=?, tempo=?, valor=?");
        prd.setString(1, ser.getNome());
        prd.setString(1, ser.getDescriçao());
        prd.setString(1, ser.getProfissional());
@@ -63,9 +67,27 @@ public class PServiço {
        }
    }
    
-   public list<Serviço> listarSer(){
-       
-   }
+   public List<EServiço>listarPro(){
+        List<EServiço> prdt = new ArrayList<EServiço>();
+        try {
+            Statement stat = connection.createStatement();
+            ResultSet rs = stat.executeQuery("SELECT * FROM servico");
+            
+            while(rs.next()){
+                EServiço ser=new EServiço();
+                ser.setIDS(rs.getInt("idservico"));
+                ser.setNome(rs.getString("nome"));
+                ser.setDescriçao(rs.getString("descricao"));
+                ser.setProfissional(rs.getString("profissional"));
+                ser.setTempo(rs.getString("tempo"));
+                ser.setValor(rs.getFloat("valor"));
+                
+            }
+        } catch (SQLException e) {
+           e.printStackTrace();
+        }
+        return prdt;
+    }
     
     
     

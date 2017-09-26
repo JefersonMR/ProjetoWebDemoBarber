@@ -5,7 +5,7 @@
  */
 package br.com.Persistencia;
 
-import br.com.Entidade.Cliente;
+import br.com.Entidade.ECliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,10 +25,10 @@ public class PCliente {
     public PCliente(){
     connection = br.com.Util.Conexao.getConexao();
 }
-    public void incluirCli(Cliente cli) throws Exception{
+    public void incluirCli(ECliente cli) throws Exception{
         //Cria a string com o sql para ser executado
         String sql = "INSERT INTO Cliente ( cpf,"
-                + "nome, " + "endereço, " + "fone, " + "email) VALUES (?, ?, ?, ?, ?)";
+                + "nome, " + "email, " + "fone, " + "endereco) VALUES (?, ?, ?, ?, ?)";
     
     //Cria o objeto para executar os comandos "contra" o banco
         PreparedStatement prd = connection.prepareStatement(sql);
@@ -36,49 +36,50 @@ public class PCliente {
         //Seta os valores recebidos como parametro para a string SQL
          prd.setString(1, cli.getCpf());
          prd.setString(2, cli.getNome());
-         prd.setString(3, cli.getEnedereço());
+         prd.setString(3, cli.getEmail());
          prd.setString(4, cli.getFone());
-         prd.setString(5, cli.getEmail());
+         prd.setString(5, cli.getEndereco());
          prd.executeUpdate();
     }
     
-    public void excluirCli(Cliente cli ) throws Exception{
+    public void excluirCli(ECliente cli ) throws Exception{
         try {
         
-        PreparedStatement ps= connection.prepareStatement("DELETE FROM * Cliente WHERE idC=?");
+        PreparedStatement ps= connection.prepareStatement("DELETE FROM * cliente WHERE idcliente=?");
         ps.setInt(1, cli.getIDC());
         ps.executeUpdate();
         } catch (SQLException e) {
         }
     }
     
-    public void alterarCli(Cliente cli) throws Exception{
+    public void alterarCli(ECliente cli) throws Exception{
         try {
-         PreparedStatement ps= connection.prepareStatement("UPDATE Cliente set cpf=?, nome=?, endereço=?, fone=?, email=?");
+         PreparedStatement ps= connection.prepareStatement("UPDATE cliente SET cpf=?, nome=?, email=?, fone=?, endereco=?");
          ps.setString(1, cli.getCpf());
          ps.setString(2, cli.getNome());
-         ps.setString(3,cli.getEnedereço());
+         ps.setString(3,cli.getEmail());
          ps.setString(4, cli.getFone());
+         ps.setString(5,cli.getEndereco());
          ps.executeUpdate();
            
         } catch (SQLException e) {
         }
     }
     
-    public List<Cliente>listarCli(){
-        List<Cliente> cli = new ArrayList<Cliente>();
+    public List<ECliente>listarCli(){
+        List<ECliente> cli = new ArrayList<ECliente>();
         try {
             Statement stat = connection.createStatement();
-            ResultSet rs = stat.executeQuery("SELECT * FROM Cliente");
+            ResultSet rs = stat.executeQuery("SELECT * FROM cliente");
             
             while(rs.next()){
-                Cliente clt=new Cliente();
-                clt.setIDC(rs.getInt("idC"));
+                ECliente clt=new ECliente();
+                clt.setIDC(rs.getInt("idcliente"));
                 clt.setCpf(rs.getString("cpf"));
                 clt.setNome(rs.getString("nome"));
-                clt.setEnedereço(rs.getString("endereço"));
-                clt.setFone(rs.getString("fone"));
                 clt.setEmail(rs.getString("email"));
+                clt.setFone(rs.getString("fone"));
+                clt.setEndereco(rs.getString("endereco"));
             }
         } catch (SQLException e) {
            e.printStackTrace();

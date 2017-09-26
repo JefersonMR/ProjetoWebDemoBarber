@@ -9,11 +9,11 @@ package br.com.Entidade;
  *
  * @author Jeferson
  */
-public class Cliente {
+public class ECliente {
     private int IDC=0;
     private String Cpf="";
     private String Nome="";
-    private String Endereço="";
+    private String Endereco="";
     private String Fone ="";
     private String Email="";
 
@@ -41,12 +41,12 @@ public class Cliente {
         this.Nome = nome;
     }
 
-    public String getEnedereço() {
-        return Endereço;
+    public String getEndereco() {
+        return Endereco;
     }
 
-    public void setEnedereço(String enedereço) {
-        this.Endereço = enedereço;
+    public void setEndereco(String enedereço) {
+        this.Endereco = enedereço;
     }
 
     public String getFone() {

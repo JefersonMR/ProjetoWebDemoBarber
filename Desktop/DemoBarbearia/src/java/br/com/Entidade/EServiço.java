@@ -9,7 +9,7 @@ package br.com.Entidade;
  *
  * @author Jeferson
  */
-public class Serviço {
+public class EServiço {
 private int IDS =0;
 private String Descriçao="";
 private String Nome="";

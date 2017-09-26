@@ -5,7 +5,7 @@
  */
 package br.com.Persistencia;
 
-import br.com.Entidade.Produto;
+import br.com.Entidade.EProduto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,10 +26,10 @@ public class PProduto {
     public PProduto(){
     connection = br.com.Util.Conexao.getConexao();
 }
-    public void incluirPro(Produto pd) throws Exception{
+    public void incluirPro(EProduto pd) throws Exception{
         //Cria a string com o sql para ser executado
-        String sql = "INSERT INTO Produto ( marca,"
-                + "nome, " + "descriçao, " + "fabricaçao, " + "validade) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO produto ( marca,"
+                + "nome, " + "descricao, " + "fabricacao, " + "validade) VALUES (?, ?, ?, ?, ?)";
     
     //Cria o objeto para executar os comandos "contra" o banco
         PreparedStatement prd = connection.prepareStatement(sql);
@@ -43,19 +43,19 @@ public class PProduto {
          prd.executeUpdate();
     }
     
-    public void excluirPro(Produto pd ) throws Exception{
+    public void excluirPro(EProduto pd ) throws Exception{
         try {
         
-        PreparedStatement ps= connection.prepareStatement("DELETE FROM * Produto WHERE idP=?");
-        ps.setInt(1, pd.getCod());
+        PreparedStatement ps= connection.prepareStatement("DELETE FROM * produto WHERE idproduto=?");
+        ps.setInt(1, pd.getIDP());
         ps.executeUpdate();
         } catch (SQLException e) {
         }
     }
     
-    public void alterarPro(Produto pd) throws Exception{
+    public void alterarPro(EProduto pd) throws Exception{
         try {
-         PreparedStatement ps= connection.prepareStatement("UPDATE Produto SET marca=?, nome=?, descriçao=?, fabricaçao=?, validade=?");
+         PreparedStatement ps= connection.prepareStatement("UPDATE produto SET marca=?, nome=?, descricao=?, fabricacao=?, validade=?");
          ps.setString(1, pd.getMarca());
          ps.setString(2, pd.getNome());
          ps.setString(3,pd.getDescriçao());
@@ -67,19 +67,19 @@ public class PProduto {
         }
     }
     
-    public List<Produto>listarPro(){
-        List<Produto> prdt = new ArrayList<Produto>();
+    public List<EProduto>listarPro(){
+        List<EProduto> prdt = new ArrayList<EProduto>();
         try {
             Statement stat = connection.createStatement();
-            ResultSet rs = stat.executeQuery("SELECT * FROM Produto");
+            ResultSet rs = stat.executeQuery("SELECT * FROM produto");
             
             while(rs.next()){
-                Produto pro=new Produto();
-                pro.setCod(rs.getInt("idP"));
+                EProduto pro=new EProduto();
+                pro.setIDP(rs.getInt("idproduto"));
                 pro.setMarca(rs.getString("marca"));
                 pro.setNome(rs.getString("nome"));
-                pro.setDescriçao(rs.getString("descriçao"));
-                pro.setFabricaçao(rs.getDate("fabricaçao"));
+                pro.setDescriçao(rs.getString("descricao"));
+                pro.setFabricaçao(rs.getDate("fabricacao"));
                 pro.setValidade(rs.getDate("validade"));
                 
             }
