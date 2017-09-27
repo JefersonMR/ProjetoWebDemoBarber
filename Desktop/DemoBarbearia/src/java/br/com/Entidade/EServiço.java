@@ -15,7 +15,7 @@ private String Descriçao="";
 private String Nome="";
 private String Profissional="";
 private String Tempo="";
-private float valor=0;
+private double valor=0;
 
     public int getIDS() {
         return IDS;
@@ -57,11 +57,11 @@ private float valor=0;
         this.Tempo = Tempo;
     }
 
-    public float getValor() {
+    public double getValor() {
         return valor;
     }
 
-    public void setValor(float valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
 

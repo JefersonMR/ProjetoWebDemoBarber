@@ -40,29 +40,35 @@ public class PProduto {
          prd.setString(3, pd.getDescriçao());
          prd.setDate(4, (java.sql.Date) pd.getFabricaçao());
          prd.setDate(5, (java.sql.Date) pd.getValidade());
+         
          prd.executeUpdate();
+         connection.close();
     }
     
     public void excluirPro(EProduto pd ) throws Exception{
         try {
         
-        PreparedStatement ps= connection.prepareStatement("DELETE FROM * produto WHERE idproduto=?");
+        PreparedStatement ps= connection.prepareStatement("DELETE FROM produto WHERE idproduto=?");
         ps.setInt(1, pd.getIDP());
-        ps.executeUpdate();
+        
+        ps.execute();
+        connection.close();
         } catch (SQLException e) {
         }
     }
     
     public void alterarPro(EProduto pd) throws Exception{
         try {
-         PreparedStatement ps= connection.prepareStatement("UPDATE produto SET marca=?, nome=?, descricao=?, fabricacao=?, validade=?");
+         PreparedStatement ps= connection.prepareStatement("UPDATE produto SET marca=?, nome=?, descricao=?, fabricacao=?, validade=? WHERE idproduto=?");
          ps.setString(1, pd.getMarca());
          ps.setString(2, pd.getNome());
          ps.setString(3,pd.getDescriçao());
          ps.setDate(4, (java.sql.Date) pd.getFabricaçao());
          ps.setDate(5, (java.sql.Date)pd.getValidade());
+         ps.setInt(6, pd.getIDP());
+         
          ps.executeUpdate();
-           
+         connection.close();
         } catch (SQLException e) {
         }
     }

@@ -27,41 +27,47 @@ public class PCliente {
 }
     public void incluirCli(ECliente cli) throws Exception{
         //Cria a string com o sql para ser executado
-        String sql = "INSERT INTO Cliente ( cpf,"
+        String sql = "INSERT INTO cliente ( cpf,"
                 + "nome, " + "email, " + "fone, " + "endereco) VALUES (?, ?, ?, ?, ?)";
     
     //Cria o objeto para executar os comandos "contra" o banco
         PreparedStatement prd = connection.prepareStatement(sql);
 
         //Seta os valores recebidos como parametro para a string SQL
-         prd.setString(1, cli.getCpf());
+         prd.setInt(1, cli.getCpf());
          prd.setString(2, cli.getNome());
          prd.setString(3, cli.getEmail());
          prd.setString(4, cli.getFone());
          prd.setString(5, cli.getEndereco());
+         
          prd.executeUpdate();
+         connection.close();
     }
     
     public void excluirCli(ECliente cli ) throws Exception{
         try {
         
-        PreparedStatement ps= connection.prepareStatement("DELETE FROM * cliente WHERE idcliente=?");
+        PreparedStatement ps= connection.prepareStatement("DELETE FROM cliente WHERE idcliente=?");
         ps.setInt(1, cli.getIDC());
-        ps.executeUpdate();
+        
+        ps.execute();
+        connection.close();
         } catch (SQLException e) {
         }
     }
     
     public void alterarCli(ECliente cli) throws Exception{
         try {
-         PreparedStatement ps= connection.prepareStatement("UPDATE cliente SET cpf=?, nome=?, email=?, fone=?, endereco=?");
-         ps.setString(1, cli.getCpf());
+         PreparedStatement ps= connection.prepareStatement("UPDATE cliente SET cpf=?, nome=?, email=?, fone=?, endereco=? WHERE idcliente=?");
+         ps.setInt(1, cli.getCpf());
          ps.setString(2, cli.getNome());
          ps.setString(3,cli.getEmail());
          ps.setString(4, cli.getFone());
          ps.setString(5,cli.getEndereco());
+         ps.setInt(6, cli.getIDC());
+         
          ps.executeUpdate();
-           
+         connection.close();
         } catch (SQLException e) {
         }
     }
@@ -75,7 +81,7 @@ public class PCliente {
             while(rs.next()){
                 ECliente clt=new ECliente();
                 clt.setIDC(rs.getInt("idcliente"));
-                clt.setCpf(rs.getString("cpf"));
+                clt.setCpf(rs.getInt("cpf"));
                 clt.setNome(rs.getString("nome"));
                 clt.setEmail(rs.getString("email"));
                 clt.setFone(rs.getString("fone"));

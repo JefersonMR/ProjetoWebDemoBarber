@@ -39,15 +39,19 @@ public class PServiço {
          prd.setString(2, ser.getDescriçao());
          prd.setString(3, ser.getProfissional());
          prd.setString(4, ser.getTempo());
-         prd.setFloat(5, ser.getValor());
+         prd.setDouble(5, ser.getValor());
+         
          prd.executeUpdate();
+         connection.close();
     }
     
     public void deleteSer(EServiço ser)throws Exception{
         try {
-        PreparedStatement prd= connection.prepareStatement("DELETE * FROM servico WHERE idservico=?");
+        PreparedStatement prd= connection.prepareStatement("DELETE FROM servico WHERE idservico=?");
         prd.setInt(1, ser.getIDS());
-        prd.executeUpdate();
+        
+        prd.execute();
+        connection.close();
         } catch (SQLException e) {
         }
     }
@@ -55,23 +59,26 @@ public class PServiço {
    public void alterarSer(EServiço ser)throws Exception{
        try {
            
-       PreparedStatement prd = connection.prepareStatement("UPDATE servico SET nome=?, descricao=?, profissional=?, tempo=?, valor=?");
+       PreparedStatement prd = connection.prepareStatement("UPDATE servico SET nome=?, descricao=?, profissional=?, tempo=?, valor=? WHERE idservico=?");
        prd.setString(1, ser.getNome());
-       prd.setString(1, ser.getDescriçao());
-       prd.setString(1, ser.getProfissional());
-       prd.setString(1, ser.getTempo());
-       prd.setFloat(5, ser.getValor());
+       prd.setString(2, ser.getDescriçao());
+       prd.setString(3, ser.getProfissional());
+       prd.setString(4, ser.getTempo());
+       prd.setDouble(5, ser.getValor());
+       prd.setInt(6, ser.getIDS());
        
        prd.executeUpdate();
+       connection.close();
        } catch (SQLException e) {
        }
    }
    
-   public List<EServiço>listarPro(){
+   public List<EServiço>listarSer(){
         List<EServiço> prdt = new ArrayList<EServiço>();
         try {
             Statement stat = connection.createStatement();
-            ResultSet rs = stat.executeQuery("SELECT * FROM servico");
+            ResultSet rs = stat.executeQuery("SELECT idservico,nome,descricao,"
+                    + "profissional,tempo,valor FROM servico");
             
             while(rs.next()){
                 EServiço ser=new EServiço();
@@ -80,7 +87,7 @@ public class PServiço {
                 ser.setDescriçao(rs.getString("descricao"));
                 ser.setProfissional(rs.getString("profissional"));
                 ser.setTempo(rs.getString("tempo"));
-                ser.setValor(rs.getFloat("valor"));
+                ser.setValor(rs.getDouble("valor"));
                 
             }
         } catch (SQLException e) {
