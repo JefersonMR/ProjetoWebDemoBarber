@@ -14,11 +14,17 @@
         <title>DemoBarbearia</title>
     </head>
     <header> 
-        <img src="pho/head.jpg">
-    
+        <figure>
+            <img src="pho/head.jpg" height="400" width="1000">
+        </figure>
     </header>
-    
     <body>
-        <h1>Cadastro de Cliente</h1>
+        <nav> 
+            <a href="Cliente.jsp">Clientes</a>
+            <a href="Produto.jsp">Produto</a>
+            <a href="Serviço.jsp">Servico</a>
+        </nav>   
+        
+        
     </body>
 </html>

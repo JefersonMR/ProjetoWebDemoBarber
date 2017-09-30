@@ -8,6 +8,8 @@ package br.com.Util;
 import br.com.Entidade.ECliente;
 import br.com.Persistencia.PCliente;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -21,30 +23,30 @@ public class Teste {
     System.out.println("QUE COMECE OS TESTES....");
 
     System.out.println("Incluir"); 
-    ECliente cl =new ECliente();
-     
-    cl.setNome("janeide"); cl.setCpf(335564154);
-    cl.setEmail("jan@.neide.live");cl.setFone("32564798");
-    cl.setEndereco("rua do incluir");
-     
-    PCliente pc = new PCliente();
-        try {
-            pc.incluirCli(cl);
-     
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }System.out.println("Incluiu you Bad Motherfucker");
-    
-    System.out.println("Alterar");
 //    ECliente cl =new ECliente();
 //     
-//    cl.setNome("hahahahah"); cl.setCpf(1234658790);
-//    cl.setEmail("namoral@.com");cl.setFone("32892442");
-//    cl.setEndereco("rua do alterar");cl.setIDC(1);
+//    cl.setNome("gui"); cl.setCpf("0000000000");
+//    cl.setEmail("gui@.lima");cl.setFone("85858585");
+//    cl.setEndereco("rua do incluir");
 //     
 //    PCliente pc = new PCliente();
 //        try {
-//            pc.alterarCli(cl);
+//            pc.incluirCli(cl);
+//     
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        }System.out.println("Incluiu you Bad Motherfucker");
+//    
+    System.out.println("Alterar");
+//    ECliente cl3 =new ECliente();
+//     
+//    cl3.setNome("hahahahah"); cl3.setCpf("1234658790");
+//    cl3.setEmail("namoral@.com");cl3.setFone("32892442");
+//    cl3.setEndereco("rua do alterar");cl3.setIDC(4);
+//     
+//    PCliente pc3 = new PCliente();
+//        try {
+//            pc3.alterarCli(cl3);
 //     
 //        } catch (SQLException e) {
 //            System.out.println(e.getMessage());
@@ -52,18 +54,31 @@ public class Teste {
 
     
     System.out.println("Excluir");
-//        ECliente cl = new ECliente();
-//        cl.setIDC(2);
-//        
-//        PCliente pc = new PCliente();
+//        PCliente pc2 = new PCliente();
 //        try {
-//            pc.excluirCli(cl);
+//            pc2.excluirCli(2);
 //        } catch (SQLException e) {
 //            System.out.println(e.getMessage());
 //        }
 //        System.out.println("Excluido you Bad Motherfucker");
 //    
-    
+    System.out.println("Listar");
+  PCliente per =new PCliente();
+    List<ECliente> lista = new ArrayList<>();
+        try {
+            lista=per.listarCli();
+        } catch (Exception e) {
+        }
+     for (ECliente tipo : lista) {
+            System.out.println("Código........: " + tipo.getIDC());
+            System.out.println("Cpf...........:"+tipo.getCpf());
+            System.out.println("Nome..........: " + tipo.getNome());
+            System.out.println("Descrisção....: " + tipo.getEndereco());
+            System.out.println("Profissional..:"+tipo.getFone());
+            System.out.println("Tempo.........:"+tipo.getEmail());
+            
+             }    
+         System.out.println("Listagem finalizada!");
     
     }
 }

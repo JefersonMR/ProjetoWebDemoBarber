@@ -34,7 +34,7 @@ public class PCliente {
         PreparedStatement prd = connection.prepareStatement(sql);
 
         //Seta os valores recebidos como parametro para a string SQL
-         prd.setInt(1, cli.getCpf());
+         prd.setString(1, cli.getCpf());
          prd.setString(2, cli.getNome());
          prd.setString(3, cli.getEmail());
          prd.setString(4, cli.getFone());
@@ -44,11 +44,11 @@ public class PCliente {
          connection.close();
     }
     
-    public void excluirCli(ECliente cli ) throws Exception{
+    public void excluirCli(int id) throws Exception{
         try {
         
         PreparedStatement ps= connection.prepareStatement("DELETE FROM cliente WHERE idcliente=?");
-        ps.setInt(1, cli.getIDC());
+        ps.setInt(1, id);
         
         ps.execute();
         connection.close();
@@ -59,7 +59,7 @@ public class PCliente {
     public void alterarCli(ECliente cli) throws Exception{
         try {
          PreparedStatement ps= connection.prepareStatement("UPDATE cliente SET cpf=?, nome=?, email=?, fone=?, endereco=? WHERE idcliente=?");
-         ps.setInt(1, cli.getCpf());
+         ps.setString(1, cli.getCpf());
          ps.setString(2, cli.getNome());
          ps.setString(3,cli.getEmail());
          ps.setString(4, cli.getFone());
@@ -76,21 +76,45 @@ public class PCliente {
         List<ECliente> cli = new ArrayList<ECliente>();
         try {
             Statement stat = connection.createStatement();
-            ResultSet rs = stat.executeQuery("SELECT * FROM cliente");
+            ResultSet rs = stat.executeQuery("SELECT * FROM cliente WHERE 1=1");
             
             while(rs.next()){
                 ECliente clt=new ECliente();
                 clt.setIDC(rs.getInt("idcliente"));
-                clt.setCpf(rs.getInt("cpf"));
+                clt.setCpf(rs.getString("cpf"));
                 clt.setNome(rs.getString("nome"));
                 clt.setEmail(rs.getString("email"));
                 clt.setFone(rs.getString("fone"));
                 clt.setEndereco(rs.getString("endereco"));
+                cli.add(clt);
             }
         } catch (SQLException e) {
            e.printStackTrace();
         }
         return cli;
+    }
+    public ECliente consultarCli(int idc) {
+        ECliente UserCliente = new ECliente();
+        try {
+            PreparedStatement preparedStatement = connection.
+                    prepareStatement("select * from cliente where idcliente=?");
+            preparedStatement.setInt(1,idc );
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                
+                UserCliente.setIDC(rs.getInt("idcliente"));
+                UserCliente.setCpf(rs.getString("cpf"));
+                UserCliente.setNome(rs.getString("nome"));
+                UserCliente.setEmail(rs.getString("email"));
+                UserCliente.setFone(rs.getString("fone"));
+                UserCliente.setEndereco(rs.getString("endereco"));
+                
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return UserCliente;
     }
             
     

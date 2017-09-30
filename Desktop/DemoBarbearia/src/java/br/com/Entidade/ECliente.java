@@ -11,7 +11,7 @@ package br.com.Entidade;
  */
 public class ECliente {
     private int IDC=0;
-    private int Cpf=0;
+    private String Cpf="";
     private String Nome="";
     private String Endereco="";
     private String Fone ="";
@@ -25,11 +25,11 @@ public class ECliente {
         this.IDC = cod;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return Cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.Cpf = cpf;
     }
 

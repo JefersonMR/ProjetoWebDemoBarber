@@ -9,4 +9,22 @@
             30
         </session-timeout>
     </session-config>
+    <servlet>
+        <servlet-name>CCliente</servlet-name>
+        <servlet-class>br.com.Controle</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CCliente</servlet-name>
+        <url-pattern>/CClinte</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CProduto</servlet-name>
+        <servlet-class>br.com.Controle</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CServiço</servlet-name>
+        <servlet-class>br.com.Controle</servlet-class>
+        
+    </servlet>
+    
 </web-app>
