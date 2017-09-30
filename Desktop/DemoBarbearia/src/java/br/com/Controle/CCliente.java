@@ -66,13 +66,13 @@ public class CCliente extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ECliente sr = new ECliente();
         
-        sr.setCpf(request.getParameter("cpfCliente"));
-        sr.setNome(request.getParameter("nomeCliente"));
-        sr.setEndereco(request.getParameter("endereçoCliente"));
-        sr.setFone(request.getParameter("foneCliente"));
-        sr.setEmail(request.getParameter("emailCliente"));
+        sr.setCpf(request.getParameter("cpf"));
+        sr.setNome(request.getParameter("nome"));
+        sr.setEndereco(request.getParameter("endereco"));
+        sr.setFone(request.getParameter("fone"));
+        sr.setEmail(request.getParameter("email"));
         
-        String id = request.getParameter("idCliente");
+        String id = request.getParameter("id");
         if(id == null || id.isEmpty())
         {
             try {

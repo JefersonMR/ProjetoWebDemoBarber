@@ -15,17 +15,17 @@
     </head>
     <body>
         <form action="CCliente" method="post" name="AddCli">
-            ID:<br><input type="text" readonly="readonly" name="idCliente" 
-                          value="<c:out value="${cliente.IDC}"/>"><br/> 
-            CPF:<br><input type="text" name="cpfCliente" 
+            ID:<br><input type="text" readonly="readonly" name="id"  
+                         value="<c:out value="${cliente.IDC}"/>"><br/> 
+            CPF:<br><input type="text" name="cpf" required 
                            value="<c:out value="${cliente.Cpf}"/>"><br>
-            Nome:<br><input type="text" name="nomeCliente" 
+            Nome:<br><input type="text" name="nome" required
                             value="<c:out value="${cliente.Nome}"/>"><br>
-            Endereço:<br><input type="text" name="enderecoCliente" 
+            Endereço:<br><input type="text" name="endereco" required 
                             value="<c:out value="${cliente.Endereco}"/>"><br>
-            Fone:<br><input type="text" name="foneCliente" 
+            Fone:<br><input type="text" name="fone" required
                             value="<c:out value="${cliente.Fone}"/>"><br>
-            Email;<br><input type="email" name="emailCliente" 
+            Email;<br><input type="email" name="email" required
                              value="<c:out value="${cliente.Email}"/>"><br>
             <br /> <input type="submit" value="Salvar"/>
         </form>

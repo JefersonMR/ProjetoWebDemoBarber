@@ -5,6 +5,7 @@
  */
 package br.com.Persistencia;
 
+import br.com.Entidade.ECliente;
 import br.com.Entidade.EProduto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -38,18 +39,18 @@ public class PProduto {
          prd.setString(1, pd.getMarca());
          prd.setString(2, pd.getNome());
          prd.setString(3, pd.getDescriçao());
-         prd.setDate(4, (java.sql.Date) pd.getFabricaçao());
-         prd.setDate(5, (java.sql.Date) pd.getValidade());
+         prd.setDate(4, new java.sql.Date(pd.getFabricaçao().getTime()));
+         prd.setDate(5, new java.sql.Date(pd.getValidade().getTime()));
          
          prd.executeUpdate();
          connection.close();
     }
     
-    public void excluirPro(EProduto pd ) throws Exception{
+    public void excluirPro(int id ) throws Exception{
         try {
         
         PreparedStatement ps= connection.prepareStatement("DELETE FROM produto WHERE idproduto=?");
-        ps.setInt(1, pd.getIDP());
+        ps.setInt(1, id);
         
         ps.execute();
         connection.close();
@@ -63,8 +64,8 @@ public class PProduto {
          ps.setString(1, pd.getMarca());
          ps.setString(2, pd.getNome());
          ps.setString(3,pd.getDescriçao());
-         ps.setDate(4, (java.sql.Date) pd.getFabricaçao());
-         ps.setDate(5, (java.sql.Date)pd.getValidade());
+         ps.setDate(4, new java.sql.Date(pd.getFabricaçao().getTime()));
+         ps.setDate(5, new java.sql.Date(pd.getFabricaçao().getTime()));
          ps.setInt(6, pd.getIDP());
          
          ps.executeUpdate();
@@ -77,7 +78,7 @@ public class PProduto {
         List<EProduto> prdt = new ArrayList<EProduto>();
         try {
             Statement stat = connection.createStatement();
-            ResultSet rs = stat.executeQuery("SELECT * FROM produto");
+            ResultSet rs = stat.executeQuery("SELECT * FROM produto WHERE 1=1");
             
             while(rs.next()){
                 EProduto pro=new EProduto();
@@ -87,12 +88,35 @@ public class PProduto {
                 pro.setDescriçao(rs.getString("descricao"));
                 pro.setFabricaçao(rs.getDate("fabricacao"));
                 pro.setValidade(rs.getDate("validade"));
-                
+                prdt.add(pro);
             }
         } catch (SQLException e) {
            e.printStackTrace();
         }
         return prdt;
     }
-             
+        public EProduto consultarCli(int idp) {
+        EProduto UserProduto = new EProduto();
+        try {
+            PreparedStatement preparedStatement = connection.
+                    prepareStatement("select * from cliente where idproduto=?");
+            preparedStatement.setInt(1,idp );
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                
+                UserProduto.setIDP(rs.getInt("idproduto"));
+                UserProduto.setMarca(rs.getString("marca"));
+                UserProduto.setNome(rs.getString("nome"));
+                UserProduto.setDescriçao(rs.getString("descricao"));
+                UserProduto.setFabricaçao(rs.getDate("fabricacao"));
+                UserProduto.setValidade(rs.getDate("validade"));
+                
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return UserProduto;
+    }
+    
 }
