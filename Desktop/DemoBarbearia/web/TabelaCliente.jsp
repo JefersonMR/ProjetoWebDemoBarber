@@ -31,11 +31,11 @@
       <c:forEach items="${clientes}" var="d">
        <tr>
         <td><c:out value="${d.IDC}"/> </td>  
-        <td><c:out value="${d.Cpf}"/> </td>
-        <td><c:out value="${d.Nome}"/> </td>
-        <td><c:out value="${d.Endereco}"/> </td>
-        <td><c:out value="${d.Fone}"/> </td>
-        <td><c:out value="${d.Email}"/> </td>
+        <td><c:out value="${d.cpf}"/> </td>
+        <td><c:out value="${d.nome}"/> </td>
+        <td><c:out value="${d.endereco}"/> </td>
+        <td><c:out value="${d.fone}"/> </td>
+        <td><c:out value="${d.email}"/> </td>
        
        <td><a href="CCliente?action=editar&idCliente=<c:out value="${d.IDC}"/>">Alterar</a></td>
        <td><a href="CCliente?action=deletar&idCliente=<c:out value="${d.IDC}"/>">Excluir</a></td>

@@ -41,7 +41,7 @@ public class PCliente {
          prd.setString(5, cli.getEndereco());
          
          prd.executeUpdate();
-         connection.close();
+//         connection.close();
     }
     
     public void excluirCli(int id) throws Exception{
@@ -51,7 +51,7 @@ public class PCliente {
         ps.setInt(1, id);
         
         ps.execute();
-        connection.close();
+        //connection.close();
         } catch (SQLException e) {
         }
     }
@@ -67,12 +67,12 @@ public class PCliente {
          ps.setInt(6, cli.getIDC());
          
          ps.executeUpdate();
-         connection.close();
+         //connection.close();
         } catch (SQLException e) {
         }
     }
     
-    public List<ECliente>listarCli(){
+    public List<ECliente>listarCli(String nome){
         List<ECliente> cli = new ArrayList<ECliente>();
         try {
             Statement stat = connection.createStatement();

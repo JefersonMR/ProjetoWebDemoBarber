@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class CCliente extends HttpServlet{
   private static final long SerialVersionUID = 1L;
-  private PCliente persistencia;
+  private final PCliente persistencia;
   private static String INSERIR_OU_EDITAR = "/Cliente.jsp";
   private static String LISTA_USUARIOS = "/TabelaCliente.jsp";  
  
@@ -44,6 +44,8 @@ public class CCliente extends HttpServlet{
             int idc = Integer.parseInt(request.getParameter("idCliente"));
            try {
                persistencia.excluirCli(idc);
+               forward = LISTA_USUARIOS;
+               request.setAttribute("clientes", persistencia.listarCli(action));
            } catch (Exception ex) {
                Logger.getLogger(CCliente.class.getName()).log(Level.SEVERE, null, ex);
            }
@@ -54,7 +56,7 @@ public class CCliente extends HttpServlet{
             request.setAttribute("d", sr);
         } else if (action.equalsIgnoreCase("TabelaCliente")){
             forward = LISTA_USUARIOS;
-            request.setAttribute("clientes", persistencia.listarCli());
+            request.setAttribute("clientes", persistencia.listarCli(action));
         } else {
             forward = INSERIR_OU_EDITAR;
         }
@@ -91,7 +93,7 @@ public class CCliente extends HttpServlet{
             }
         }
         RequestDispatcher view = request.getRequestDispatcher(LISTA_USUARIOS);
-        request.setAttribute("clientes", persistencia.listarCli());
+        request.setAttribute("clientes", persistencia.listarCli(LISTA_USUARIOS));
         view.forward(request, response);
     }
     

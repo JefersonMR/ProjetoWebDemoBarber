@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="css/cadastro.css">
+        <link rel="stylesheet" type="text/css" href="css/menu.css">
         <link rel="icon" type="image/jpg" href="pho/title.jpg">
         <title>DemoBarbearia</title>
     </head>
@@ -22,7 +22,8 @@
         <nav> 
             <a href="Cliente.jsp">Clientes</a>
             <a href="Produto.jsp">Produto</a>
-            <a href="Serviço.jsp">Servico</a>
+            <a href="Servico.jsp">Serviço</a>
+            <a href="CCliente?action=TabelaCliente">Tabela Cliente</a>
         </nav>   
         
         

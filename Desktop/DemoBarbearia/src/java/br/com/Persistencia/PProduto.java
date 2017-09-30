@@ -43,7 +43,7 @@ public class PProduto {
          prd.setDate(5, new java.sql.Date(pd.getValidade().getTime()));
          
          prd.executeUpdate();
-         connection.close();
+        // connection.close();
     }
     
     public void excluirPro(int id ) throws Exception{
@@ -53,7 +53,7 @@ public class PProduto {
         ps.setInt(1, id);
         
         ps.execute();
-        connection.close();
+        //connection.close();
         } catch (SQLException e) {
         }
     }
@@ -69,7 +69,7 @@ public class PProduto {
          ps.setInt(6, pd.getIDP());
          
          ps.executeUpdate();
-         connection.close();
+        // connection.close();
         } catch (SQLException e) {
         }
     }

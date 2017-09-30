@@ -16,6 +16,7 @@ public class ECliente {
     private String Endereco="";
     private String Fone ="";
     private String Email="";
+    
 
     public int getIDC() {
         return IDC;
