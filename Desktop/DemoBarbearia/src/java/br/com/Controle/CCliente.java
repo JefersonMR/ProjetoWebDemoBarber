@@ -8,7 +8,6 @@ package br.com.Controle;
 import br.com.Entidade.ECliente;
 import br.com.Persistencia.PCliente;
 import java.io.IOException;
-import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;

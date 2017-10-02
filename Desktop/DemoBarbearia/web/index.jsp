@@ -23,7 +23,9 @@
             <a href="Cliente.jsp">Clientes</a>
             <a href="Produto.jsp">Produto</a>
             <a href="Servico.jsp">Serviço</a>
-            <a href="CCliente?action=TabelaCliente">Tabela Cliente</a>
+            <a href="CCliente?action=TabelaCliente">Tabela Clientes</a>
+            <a href="CServiço?action=TabelaServico">Tabela Serviços</a>
+            
         </nav>   
         
         

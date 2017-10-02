@@ -42,16 +42,16 @@ public class PServiço {
          prd.setDouble(5, ser.getValor());
          
          prd.executeUpdate();
-         connection.close();
+        //connection.close();
     }
     
-    public void deleteSer(EServiço ser)throws Exception{
+    public void deleteSer(int id)throws Exception{
         try {
         PreparedStatement prd= connection.prepareStatement("DELETE FROM servico WHERE idservico=?");
-        prd.setInt(1, ser.getIDS());
+        prd.setInt(1, id);
         
         prd.execute();
-        connection.close();
+        //connection.close();
         } catch (SQLException e) {
         }
     }
@@ -68,17 +68,16 @@ public class PServiço {
        prd.setInt(6, ser.getIDS());
        
        prd.executeUpdate();
-       connection.close();
+       //connection.close();
        } catch (SQLException e) {
        }
    }
    
-   public List<EServiço>listarSer(){
-        List<EServiço> prdt = new ArrayList<EServiço>();
+   public List<EServiço>listarSer(String nome){
+        List<EServiço> sr = new ArrayList<EServiço>();
         try {
             Statement stat = connection.createStatement();
-            ResultSet rs = stat.executeQuery("SELECT idservico,nome,descricao,"
-                    + "profissional,tempo,valor FROM servico");
+            ResultSet rs = stat.executeQuery("SELECT * FROM idservico WHERE 1=1");
             
             while(rs.next()){
                 EServiço ser=new EServiço();
@@ -88,12 +87,36 @@ public class PServiço {
                 ser.setProfissional(rs.getString("profissional"));
                 ser.setTempo(rs.getString("tempo"));
                 ser.setValor(rs.getDouble("valor"));
-                
+                sr.add(ser);
             }
         } catch (SQLException e) {
            e.printStackTrace();
         }
-        return prdt;
+        return sr;
+    }
+    
+   public EServiço consultarSer(int idc) {
+        EServiço UserServico = new EServiço();
+        try {
+            PreparedStatement preparedStatement = connection.
+                    prepareStatement("select * from servico where idservico=?");
+            preparedStatement.setInt(1,idc );
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                
+                UserServico.setIDS(rs.getInt("idservico"));
+                UserServico.setNome(rs.getString("nome"));
+                UserServico.setDescriçao(rs.getString("descricao"));
+                UserServico.setProfissional(rs.getString("profissional"));
+                UserServico.setTempo(rs.getString("tempo"));
+                UserServico.setValor(rs.getDouble("valor"));
+                
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return UserServico;
     }
     
     

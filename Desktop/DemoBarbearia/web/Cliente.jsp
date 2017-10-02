@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri= "http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,7 +25,7 @@
                             value="<c:out value="${d.endereco}"/>"><br>
             Fone:<br><input type="text" name="fone" required
                             value="<c:out value="${d.fone}"/>"><br>
-            Email;<br><input type="email" name="email" required
+            Email:<br><input type="email" name="email" required
                              value="<c:out value="${d.email}"/>"><br>
             <br /> <input type="submit" value="Salvar"/>
         </form>

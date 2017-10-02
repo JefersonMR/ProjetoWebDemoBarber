@@ -70,26 +70,26 @@ public class TesteServiço {
 
           System.out.println("Listando");
       
-        PServiço per = new PServiço();
-        List<EServiço> lista = new ArrayList<>();
-        try {
-            
-        lista = per.listarSer();
-        } catch (Exception e) {
-        }
-        
-        for (EServiço tipo : lista) {
-            System.out.println("Código........: " + tipo.getIDS());
-            System.out.println("Nome..........: " + tipo.getNome());
-            System.out.println("Descrisção....: " + tipo.getDescriçao());
-            System.out.println("Profissional..:"+tipo.getProfissional());
-            System.out.println("Tempo.........:"+tipo.getTempo());
-            System.out.println("Valor.........:"+tipo.getValor());
-             }    
-         System.out.println("Listagem finalizada!");
-        
-        
-        
+//        PServiço per = new PServiço();
+//        List<EServiço> lista = new ArrayList<>();
+//        try {
+//            
+//        lista = per.listarSer();
+//        } catch (Exception e) {
+//        }
+//        
+//        for (EServiço tipo : lista) {
+//            System.out.println("Código........: " + tipo.getIDS());
+//            System.out.println("Nome..........: " + tipo.getNome());
+//            System.out.println("Descrisção....: " + tipo.getDescriçao());
+//            System.out.println("Profissional..:"+tipo.getProfissional());
+//            System.out.println("Tempo.........:"+tipo.getTempo());
+//            System.out.println("Valor.........:"+tipo.getValor());
+//             }    
+//         System.out.println("Listagem finalizada!");
+//        
+//        
+//        
     }
  
 }
