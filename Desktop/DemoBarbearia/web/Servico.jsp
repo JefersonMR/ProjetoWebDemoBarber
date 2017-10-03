@@ -17,17 +17,17 @@
         <form>
          <form action="CServiço" method="post" name="AddSer">
             ID:<br><input type="text" readonly="readonly" name="id"  
-                         value="<c:out value="${d.IDS}"/>"><br/> 
+                         value="<c:out value="${ds.IDS}"/>"><br/> 
             Nome:<br><input type="text" name="nome" required 
-                           value="<c:out value="${d.nome}"/>"><br>
+                           value="<c:out value="${ds.nome}"/>"><br>
             Descrição:<br><input type="text" name="descricao" required
-                            value="<c:out value="${d.descricao}"/>"><br>
+                            value="<c:out value="${ds.descricao}"/>"><br>
             Profissional:<br><input type="text" name="profissional" required 
-                            value="<c:out value="${d.profissional}"/>"><br>
+                            value="<c:out value="${ds.profissional}"/>"><br>
             Tempo:<br><input type="text" name="tempo" required
-                            value="<c:out value="${d.tempo}"/>"><br>
+                            value="<c:out value="${ds.tempo}"/>"><br>
             Valor:<br><input type="number" name="valor" required
-                             value="<c:out value="${d.valor}"/>"><br>
+                             value="<c:out value="${ds.valor}"/>"><br>
             <br /> <input type="submit" value="Salvar"/>
            </form>
     </body>

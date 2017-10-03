@@ -27,17 +27,17 @@
             </tr>
             <tbody> 
        
-        <c:forEach items="${servicos}" var="d">
+        <c:forEach items="${servicos}" var="ds">
         <tr>
-        <td><c:out value="${d.IDS}"/> </td>  
-        <td><c:out value="${d.nome}"/> </td>
-        <td><c:out value="${d.descricao}"/> </td>
-        <td><c:out value="${d.profissional}"/> </td>
-        <td><c:out value="${d.tempo}"/> </td>
-        <td><c:out value="${d.valor}"/> </td>
+        <td><c:out value="${ds.IDS}"/> </td>  
+        <td><c:out value="${ds.nome}"/> </td>
+        <td><c:out value="${ds.descricao}"/> </td>
+        <td><c:out value="${ds.profissional}"/> </td>
+        <td><c:out value="${ds.tempo}"/> </td>
+        <td><c:out value="${ds.valor}"/> </td>
        
-       <td><a href="CServiço?action=editar&idServico=<c:out value="${d.IDS}"/>">Alterar</a></td>
-       <td><a href="CServiço?action=deletar&idServico=<c:out value="${d.IDS}"/>">Excluir</a></td>
+       <td><a href="CServiço?action=editar&idServico=<c:out value="${ds.IDS}"/>">Alterar</a></td>
+       <td><a href="CServiço?action=deletar&idServico=<c:out value="${ds.IDS}"/>">Excluir</a></td>
                         
        
        </tr>

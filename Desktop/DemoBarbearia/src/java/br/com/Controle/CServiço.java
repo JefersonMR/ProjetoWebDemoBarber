@@ -39,18 +39,20 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)th
 
 if (action.equalsIgnoreCase("deletar")){
             int ids = Integer.parseInt(request.getParameter("idServico"));
-           try {
-               persistencia.deleteSer(ids);
+           
+        try {
+            persistencia.deleteSer(ids);
+        } catch (Exception ex) {
+            Logger.getLogger(CServiço.class.getName()).log(Level.SEVERE, null, ex);
+        }
                forward = LISTA_USUARIOS;
                request.setAttribute("servicos", persistencia.listarSer(action));
-           } catch (Exception ex) {
-               Logger.getLogger(CCliente.class.getName()).log(Level.SEVERE, null, ex);
-           }
+           
         }else if (action.equalsIgnoreCase("editar")){
             forward = INSERIR_OU_EDITAR;
             int ids = Integer.parseInt(request.getParameter("idServico"));
             EServiço sr= persistencia.consultarSer(ids);
-            request.setAttribute("d", sr);
+            request.setAttribute("ds", sr);
         } else if (action.equalsIgnoreCase("TabelaServico")){
             forward = LISTA_USUARIOS;
             request.setAttribute("servicos", persistencia.listarSer(action));
@@ -75,19 +77,23 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)t
    String id =request.getParameter("id");
    if(id==null||id.isEmpty()){
       
+       
        try {
            persistencia.incluirSer(sr);
        } catch (Exception ex) {
            Logger.getLogger(CServiço.class.getName()).log(Level.SEVERE, null, ex);
        }
+       
    }else{
        sr.setIDS(Integer.parseInt(id));
+       
        
        try {
            persistencia.alterarSer(sr);
        } catch (Exception ex) {
            Logger.getLogger(CServiço.class.getName()).log(Level.SEVERE, null, ex);
        }
+       
    }
    
         RequestDispatcher view = request.getRequestDispatcher(LISTA_USUARIOS);

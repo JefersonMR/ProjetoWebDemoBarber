@@ -74,7 +74,7 @@ public class PProduto {
         }
     }
     
-    public List<EProduto>listarPro(){
+    public List<EProduto>listarPro(String nome){
         List<EProduto> prdt = new ArrayList<EProduto>();
         try {
             Statement stat = connection.createStatement();
