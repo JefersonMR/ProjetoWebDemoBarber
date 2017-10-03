@@ -7,12 +7,110 @@ and open the template in the editor.
     Created on : 19/09/2017, 21:39:10
     Author     : aluno
 */
-h1{
-   font-size: 21;
-   color: darkgoldenrod;
+*{
+  margin: 0;
+  padding: 0;  
+}
+@font-face{
+    font-family: hs;
+    src:url(../font/coventrygarden.regular.ttf);
+}
+@font-face{
+    font-family: as;
+    src:url(../font/beachman-script.regular.ttf);
 }
 header{
-    background-color:wheat;
-   }
-   
-   
+ background-color:#313131;
+ height:340px;
+ border-bottom:solid 4px #A3845B;
+}
+header p{
+text-align: center;
+ color: whitesmoke;
+ font-size: 110px;
+ padding: 100px 0px 0px 0px;
+ font-family: hs;
+ 
+}
+nav{
+    display: block;
+}  
+nav ul{
+   list-style-type: none;
+   text-align: center;
+   position: absolute;
+   top:0;
+}   
+ nav ul li{
+ background-color:#353533;
+ width: 150px;
+ height: 30px;
+ margin-top: 5px;
+ line-height: 30px;
+ transition: background-color 1s;
+ padding: 10px;
+}
+ nav ul li a{
+ color: white;
+ text-decoration: none;
+ font-family: hs;
+ font-size: 20px;
+}
+ nav ul li:hover{
+background-color: #A3845B;
+}
+nav a:hover{
+color: #000000;
+text-decoration: underline;
+}  
+figure.banner{
+  margin-top: 0px;
+  width: 900px;
+  height: 500px;
+  animation: slide 10s infinite;
+  animation-direction: alternate;
+  border-right: solid 2px #313131;
+}
+
+@keyframes slide{
+    0%, 30%{
+    background-image: url(../pho/barba.jpg);
+        
+    }
+    35%, 65%{
+    background-image: url(../pho/cabelo.jpg);    
+        }
+    70%, 100%{
+    background-image: url(../pho/bigodon.jpg);    
+    }
+    
+}
+aside{
+    display: block;
+    background-color: #313131;
+    height: 100%;
+    width: 440px;
+    float: right;
+}
+aside p{
+    color:black;
+    font-size:42;
+    font-family: as;
+    text-align:center;
+    position: absolute;
+    top: 370px;
+    left: 1190px;
+}
+footer{
+    border-top: solid 4px #A3845B;  
+    background-color:#313131;
+    height: 150px;
+    width: auto;
+}
+footer p{
+   padding-top:50px;   
+   font-size: 32px;
+   text-align: center;
+   color: whitesmoke;
+   font-family: hs;
+}

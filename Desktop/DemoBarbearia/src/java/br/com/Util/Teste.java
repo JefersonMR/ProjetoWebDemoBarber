@@ -62,11 +62,11 @@ public class Teste {
 ////        }
 ////        System.out.println("Excluido you Bad Motherfucker");
 ////    
-//    System.out.println("Listar");
-//  PCliente per =new PCliente();
+    System.out.println("Listar");
+//  PCliente pers =new PCliente();
 //    List<ECliente> lista = new ArrayList<>();
 //        try {
-//            lista=per.listarCli();
+//            lista=pers.listarCli("2");
 //        } catch (Exception e) {
 //        }
 //     for (ECliente tipo : lista) {
@@ -77,8 +77,8 @@ public class Teste {
 //            System.out.println("Profissional..:"+tipo.getFone());
 //            System.out.println("Tempo.........:"+tipo.getEmail());
 //            
-//             }    
-//         System.out.println("Listagem finalizada!");
-    
+//           }    
+//        System.out.println("Listagem finalizada!");
+//    
     }
-}
+    }

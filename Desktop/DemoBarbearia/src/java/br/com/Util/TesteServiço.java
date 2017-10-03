@@ -24,7 +24,7 @@ public class TesteServiço {
     
     System.out.println("QUE COMECE OS TESTES....");
 
-      System.out.println("Incluir"); 
+//      System.out.println("Incluir"); 
 //        EServiço sr =new EServiço();
 //     
 //    sr.setNome("Alisamento"); sr.setDescriçao("alisa o cabelo idiota");
@@ -44,7 +44,7 @@ public class TesteServiço {
 //     
 //    sr.setNome("Barba"); sr.setDescriçao("Corta o barba idiota");
 //    sr.setProfissional("Jubileu"); sr.setTempo("20 min");
-//    sr.setValor(20.00);sr.setIDS(1);
+//    sr.setValor(20.00);sr.setIDS(3);
 //     
 //    PServiço psr = new PServiço();
 //        try {
@@ -53,15 +53,13 @@ public class TesteServiço {
 //        } catch (SQLException e) {
 //            System.out.println(e.getMessage());
 //        }System.out.println("Incluiu you Bad Motherfucker");
-//
+
     
     System.out.println("Excluir");
-//        EServiço sr = new EServiço();
-//        sr.setIDS(1);
 //        
 //        PServiço psr = new PServiço();
 //        try {
-//            psr.deleteSer(sr);
+//            psr.deleteSer(4);
 //        } catch (SQLException e) {
 //            System.out.println(e.getMessage());
 //        }
@@ -74,7 +72,7 @@ public class TesteServiço {
 //        List<EServiço> lista = new ArrayList<>();
 //        try {
 //            
-//        lista = per.listarSer();
+//        lista = per.listarSer("2");
 //        } catch (Exception e) {
 //        }
 //        

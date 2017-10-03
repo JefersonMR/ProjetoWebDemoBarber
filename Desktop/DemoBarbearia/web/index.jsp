@@ -14,20 +14,40 @@
         <title>DemoBarbearia</title>
     </head>
     <header> 
-        <figure>
-            <img src="pho/head.jpg" height="400" width="1000">
-        </figure>
+        <p>Demo Barbearia</p>
     </header>
     <body>
-        <nav> 
-            <a href="Cliente.jsp">Clientes</a>
-            <a href="Produto.jsp">Produto</a>
-            <a href="Servico.jsp">Serviço</a>
-            <a href="CCliente?action=TabelaCliente">Tabela Clientes</a>
-            <a href="CServiço?action=TabelaServico">Tabela Serviços</a>
+        <div id ="interface">  
+    
+        <nav id="menu">
+        <ul>
+            <li><a href="Cliente.jsp">Clientes</a></li>
+            <li><a href="Produto.jsp">Produtos</a></li>
+            <li><a href="Servico.jsp">Serviços</a></li>
+            <li><a href="CCliente?action=TabelaCliente">Tabela Clientes</a></li>
+            <li><a href="CProduto?action=TabelaProduto">Tabela Produtos</a></li>
+            <li><a href="CServiço?action=TabelaServico">Tabela Serviços</a></li>
+        </ul>
+        </nav>
+            <figure class="banner">
             
-        </nav>   
-        
-        
+            </figure>   
+            <aside>
+                <div class="out">
+                <p><u>Barbearia</u><br> 
+                   Para proporcionar ao cliente o<br>
+                   que existe de melhor no ramo, <br>
+                   onde o ambiente e o atendimento<br> 
+                   são minuciosamente envolventes,<br> 
+                   transformando o simples ato de<br> 
+                   fazer a barba ou cortar o cabelo<br> 
+                   em um momento de lazer.</p>
+                </div>
+            </aside> 
+        </div>       
     </body>
+    <footer>
+        <p>Página construinda pelo lord supremo:<br> Eu</p>
+        
+    </footer>
 </html>
